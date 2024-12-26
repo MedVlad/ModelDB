@@ -1,7 +1,8 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import UserRegister
-from .models import Buyer, Game
+from .models import Buyer, Game, News
 
 
 def index(request):
@@ -85,3 +86,10 @@ def sign_up_by_django(request):
         form = UserRegister()
     info['form'] = form
     return render(request, 'first_task/registration_page.html', context=info)
+
+def news(request):
+    news = News.objects.all().order_by('-date')
+    paginator = Paginator(news, 3)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request,'first_task/news.html',{'page_obj':page_obj})
