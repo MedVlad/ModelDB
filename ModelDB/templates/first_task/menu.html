@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+<style type="text/css">
+   li div {
+    display: flex;
+    align-items: center;
+   justify-content:left;
+   }
+  </style>
+  </style>
+</head>
+<body>
+<div >
+<h1>{% block pagename%}Шаблон Меню{%endblock%}</h1>
+</div>
+{%block menu%}
+<div>
+  <ul>
+    <li><a href=""><h3>Главная</h3></a></li>
+    <li><a href="/market"><h3>Магазин</h3></a></li>
+    <li><a href="/cart"><h3>Корзина</h3></a></li>
+  </ul>
+</div>
+{%endblock%}
+{%block content%}
+{%endblock%}
+</body>
+</html>
