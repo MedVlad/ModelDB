@@ -1,0 +1,12 @@
+from task1.models import Buyer, Game
+tom = Buyer.objects.create(name="Tom", age=23, balance=6000)
+tim = Buyer.objects.create(name="Tim", age=17, balance=5000)
+tam = Buyer.objects.create(name="Tam", age=45, balance=8000)
+
+game1 = Game.objects.create(title="Game1",cost=1500,size=20000000000,description="Так себе игра")
+game2 = Game.objects.create(title="Game2",cost=1800,size=20000000000,description="Ничего",age_limited=True)
+game3 = Game.objects.create(title="Game3",cost=1990,size=60000000000,description="Круто",age_limited=True) 
+
+Game.objects.get(id=1).buyer.set((tom,tim,tam))
+Game.objects.get(id=2).buyer.set((tom,tam))
+Game.objects.get(id=2).buyer.set((tom,))
